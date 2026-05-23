@@ -1,0 +1,1 @@
+var e=`/zhizhi/assets/like-C15FIupx.png`;export{e as t};

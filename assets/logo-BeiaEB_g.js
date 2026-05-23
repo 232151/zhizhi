@@ -1,0 +1,1 @@
+var e=`/zhizhi/assets/logo-Yk-kCLFB.png`;export{e as t};
