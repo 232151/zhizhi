@@ -96,7 +96,7 @@ const frontRoutes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/zhizhi/'),
   routes: [...backendRoutes, ...frontRoutes]
 })
 
