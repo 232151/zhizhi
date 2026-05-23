@@ -3,7 +3,7 @@ import { ElMessage } from 'element-plus';
 
 // axios 实例
 const service = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://159.75.169.224:1235/api',
+  baseURL: 'http://159.75.169.224:1235/api',
   timeout: 5000
 });
 
