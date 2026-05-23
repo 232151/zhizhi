@@ -1,0 +1,896 @@
+/* ============================================
+   移动端响应式 H5 适配 - 全局样式
+   所有样式均在屏幕宽度 ≤ 768px 时生效
+   严格增量新增，不影响 PC 端任何样式
+   ============================================ */
+
+/* ========== 全局基础适配 ========== */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  body {
+    height: auto;
+    min-height: 100vh;
+    background-color: #f1f4f6;
+    overflow-x: hidden;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+
+  #app {
+    height: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* 全局防止横向溢出 */
+  body,
+  #app,
+  .el-container,
+  .el-main,
+  .el-header {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* 全局平滑滚动 */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* 优化移动端点击区域 */
+  .el-button {
+    min-height: 40px;
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .el-input__inner {
+    font-size: 16px !important; /* 防止 iOS 缩放 */
+  }
+
+  .el-form-item__label {
+    font-size: 14px;
+  }
+
+  /* 移除 PC 端固定高度限制 */
+  .el-header {
+    height: auto !important;
+    min-height: 50px;
+  }
+}
+
+/* ========================================
+   一、认证页面适配（AuthLayout + Login + Register）
+   最高优先级
+   ======================================== */
+@media (max-width: 768px) {
+  /* AuthLayout - 左右分栏转为上下堆叠 */
+  .auth-layout {
+    flex-direction: column !important;
+    width: 100vw !important;
+    height: auto !important;
+    min-height: 100vh;
+    overflow-y: auto !important;
+  }
+
+  .auth-layout .left-section {
+    flex: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 200px;
+    padding: 30px 20px;
+    box-sizing: border-box;
+  }
+
+  .auth-layout .left-section .title {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .auth-layout .left-section .text {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+
+  .auth-layout .left-section .robot {
+    width: 100px;
+    height: 100px;
+  }
+
+  .auth-layout .left-section .robot .el-image {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .auth-layout .right-section {
+    flex: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: calc(100vh - 200px);
+    padding: 20px 16px 40px;
+    overflow-y: visible !important;
+  }
+
+  /* Login.vue - 登录表单移动端适配 */
+  .login-page {
+    min-height: auto !important;
+    padding: 0;
+  }
+
+  .login-page .background-effects {
+    display: none;
+  }
+
+  .login-page .container {
+    max-width: 100% !important;
+    padding: 10px;
+  }
+
+  .login-page .login-title h2 {
+    font-size: 22px;
+  }
+
+  .login-page .login-title p {
+    font-size: 13px;
+  }
+
+  .login-page .form-container {
+    padding: 20px 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .login-page .login-button {
+    height: 46px;
+    font-size: 16px;
+  }
+
+  /* Register.vue - 注册表单移动端适配 */
+  .register-page .container,
+  .container:has(.title-text) {
+    max-width: 100% !important;
+    padding: 10px;
+  }
+
+  /* 注册表单容器 */
+  .right-section .container {
+    max-width: 100% !important;
+    padding: 5px 10px !important;
+  }
+
+  .right-section .container .title .title-text h2 {
+    font-size: 22px;
+  }
+
+  .right-section .container .title .title-text p {
+    font-size: 13px;
+  }
+
+  .right-section .form-container {
+    margin-top: 8px;
+  }
+
+  .right-section .form-container .btn {
+    height: 46px;
+    font-size: 16px;
+  }
+
+  /* 注册表单输入框优化 */
+  .right-section .el-select {
+    width: 100% !important;
+  }
+}
+
+/* ========================================
+   二、前台用户页面适配（FrontLayout + Home + Consulation等）
+   第二优先级
+   ======================================== */
+@media (max-width: 768px) {
+  /* FrontLayout - 前台布局 */
+  .frontend-layout {
+    min-height: 100vh;
+  }
+
+  /* 导航栏移动端适配 */
+  .navbar-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  }
+
+  .navbar-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px !important;
+    gap: 0;
+  }
+
+  .brand-section {
+    flex: 0 1 auto;
+    max-width: calc(100% - 52px);
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand-logo {
+    width: 38px !important;
+    height: 38px !important;
+    flex-shrink: 0;
+    border-radius: 8px;
+  }
+
+  .brand-name {
+    font-size: 16px !important;
+    margin-left: 0 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* 导航栏移动端由 FrontLayout.vue 内汉堡菜单 CSS 控制 */
+
+  /* Footer */
+  .footer-container {
+    padding: 12px 0;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+    padding: 0 12px;
+  }
+
+  /* ========== Home.vue - 首页移动端适配 ========== */
+  .home-container {
+    height: auto !important;
+    min-height: calc(100vh - 200px);
+    padding: 2rem 0 !important;
+  }
+
+  .home-container .content {
+    flex-direction: column-reverse !important;
+    gap: 20px;
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  .home-container .content .text {
+    width: 100% !important;
+  }
+
+  .home-container .content .text .title {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  .home-container .content .text .hero-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .home-container .content .text .hero-actions .el-button {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+    min-height: 48px;
+    font-size: 14px;
+    padding: 10px 12px;
+    white-space: nowrap;
+  }
+
+  .home-container .content .robot {
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  .home-container .content .robot img {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* ========== Consulation.vue - AI咨询页移动端适配 ========== */
+  .consultation-container {
+    width: 100% !important;
+    flex-direction: column !important;
+    padding: 10px !important;
+    gap: 10px !important;
+  }
+
+  /* 侧边栏 - 移动端折叠到顶部 */
+  .consultation-container .sidebar {
+    width: 100% !important;
+    flex-shrink: 0;
+  }
+
+  .consultation-container .sidebar .ai-assistant-info {
+    margin-bottom: 10px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .consultation-container .sidebar .ai-assistant-info .breathing-circle {
+    width: 44px !important;
+    height: 44px !important;
+    margin: 0;
+    flex-shrink: 0;
+    animation: none;
+  }
+
+  .consultation-container .sidebar .ai-assistant-info .assistant-name {
+    font-size: 14px;
+    margin: 0;
+    -webkit-text-fill-color: #333;
+  }
+
+  .consultation-container .sidebar .ai-assistant-info .online-status {
+    margin-left: auto;
+  }
+
+  .consultation-container .sidebar .session-history {
+    margin-bottom: 0;
+    padding: 12px;
+    min-height: auto;
+  }
+
+  .consultation-container .sidebar .session-history .session-list {
+    max-height: 150px;
+  }
+
+  .consultation-container .sidebar .session-history .session-list .session-item .session-info .session-title .session-preview {
+    width: 100%;
+  }
+
+  /* 聊天主区域 - 移动端全宽 */
+  .consultation-container .chat-main {
+    flex: none !important;
+    width: 100% !important;
+    border-radius: 12px;
+  }
+
+  .consultation-container .chat-main .chat-header {
+    padding: 12px 16px;
+  }
+
+  .consultation-container .chat-main .chat-header .header-left .chat-info h2 {
+    font-size: 16px;
+  }
+
+  .consultation-container .chat-main .chat-header .header-left .chat-info p {
+    font-size: 12px;
+  }
+
+  .consultation-container .chat-main .chat-messages {
+    padding: 16px;
+    max-height: calc(100vh - 350px);
+    gap: 12px;
+  }
+
+  .consultation-container .chat-main .chat-messages .message-item .message-content {
+    max-width: 85%;
+  }
+
+  .consultation-container .chat-main .chat-messages .message-item .message-content .message-bubble {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  .consultation-container .chat-main .chat-input {
+    padding: 12px 16px;
+    gap: 8px;
+  }
+
+  .consultation-container .chat-main .chat-input .message-input {
+    flex: 1;
+  }
+
+  .consultation-container .chat-main .chat-input .send-btn {
+    height: 44px !important;
+    width: 44px !important;
+    border-radius: 12px !important;
+    flex-shrink: 0;
+  }
+}
+
+/* ========================================
+   三、后台管理页面适配（BackEndLayout + 各管理页）
+   第三优先级
+   ======================================== */
+@media (max-width: 768px) {
+  /* BackEndLayout - 后台布局移动端适配 */
+  .backend-layout {
+    height: auto !important;
+    min-height: 100vh;
+  }
+
+  .backend-layout .main-container {
+    flex-direction: column !important;
+  }
+
+  /* ========== Sidebar 移动端顶部导航栏修复 ========== */
+
+  /* 品牌区域 - 移动端隐藏，释放横向空间确保4个菜单项强制同行 */
+  .menu-style .brand {
+    display: none !important;
+  }
+
+  /* 菜单容器 - 覆盖PC端侧边栏样式，转为顶部通栏 */
+  .menu-style {
+    width: 100% !important;
+    height: auto !important;
+    flex-shrink: 0;
+    transition: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid #ebeef5;
+  }
+
+  .menu-style.el-menu--collapse {
+    width: 100% !important;
+  }
+
+  /* 核心修复：菜单容器 - 强制水平单行排列，绝对禁止换行 */
+  .backend-layout .menu-style {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    background: #fafafa;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 菜单项 - 等宽均分、统一间距、居中内容 */
+  .backend-layout .menu-style .el-menu-item {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 8px !important;
+    margin: 4px 2px !important;
+    font-size: 13px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 8px;
+    text-align: center;
+    white-space: nowrap;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  /* 菜单项内图标尺寸统一，防止挤压变形 */
+  .backend-layout .menu-style .el-menu-item .el-icon {
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  /* Navbar 移动端 */
+  .navbar {
+    height: auto !important;
+    min-height: 50px;
+    padding: 10px 14px !important;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .navbar .left-side {
+    gap: 6px;
+  }
+
+  .navbar .left-side .page-title {
+    font-size: 16px;
+    margin-left: 6px;
+    font-weight: 600;
+  }
+
+  .navbar .right-side .user-trigger .user-name {
+    display: none;
+  }
+
+  /* 主内容区 */
+  .main-content .content-container {
+    padding: 12px !important;
+    min-height: auto !important;
+  }
+
+  /* ========== dashboard.vue - 数据仪表盘移动端 ========== */
+  .dashboard-container .summary-row {
+    margin-bottom: 12px;
+  }
+
+  .dashboard-container .summary-row .el-col {
+    margin-bottom: 12px;
+  }
+
+  .dashboard-container .card-content .avatar {
+    width: 48px !important;
+    height: 48px !important;
+    margin-right: 10px !important;
+  }
+
+  .dashboard-container .card-content .info .number {
+    font-size: 20px;
+  }
+
+  .dashboard-container .card-content .info .sub-number {
+    font-size: 14px;
+  }
+
+  .dashboard-container .chart-stats {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .dashboard-container .chart-stats .stat-item {
+    flex: 1 1 30%;
+    min-width: 100px;
+    padding: 8px 6px;
+  }
+
+  .dashboard-container .chart-stats .stat-value {
+    font-size: 15px;
+  }
+
+  .dashboard-container .panel-row {
+    margin-top: 12px;
+  }
+
+  .dashboard-container .panel-row .el-col {
+    margin-bottom: 12px;
+  }
+
+  .dashboard-container .chart-content {
+    height: 250px;
+  }
+
+  /* ========== knowledge.vue - 知识文章管理 ========== */
+  .knowledge .el-table {
+    font-size: 13px;
+  }
+
+  .knowledge .el-table .el-table__body-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 表格行高精简 */
+  .knowledge .el-table td.el-table__cell {
+    padding: 8px 4px;
+    vertical-align: middle;
+  }
+
+  .knowledge .el-table th.el-table__cell {
+    padding: 8px 4px;
+  }
+
+  /* 文章标题单行截断 */
+  .knowledge .el-table td.el-table__cell:first-child > .cell {
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* 分类/作者/阅读/时间列字体缩小 */
+  .knowledge .el-table .el-table__cell {
+    font-size: 12px;
+  }
+
+  /* 分类列精简 */
+  .knowledge .el-table .el-table__cell:nth-child(2) .cell {
+    font-size: 11px;
+    color: #666;
+  }
+
+  /* 移动端操作列精简 */
+  .knowledge .el-table .el-table__fixed-right {
+    width: auto !important;
+  }
+
+  .knowledge .el-table .el-table__fixed-right .el-table__cell {
+    width: auto !important;
+    min-width: 80px;
+    padding: 4px 2px;
+    white-space: nowrap;
+  }
+
+  .knowledge .el-table .el-table__fixed-right .el-button {
+    margin: 0;
+    padding: 2px 5px;
+    font-size: 10px;
+    min-height: 24px;
+  }
+
+  /* 隐藏表格中较不重要的列（作者列在小屏上可隐藏）*/
+  @media (max-width: 480px) {
+    .knowledge .el-table .el-table__cell:nth-child(3) {
+      display: none;
+    }
+  }
+
+  /* 分页移动端适配 */
+  .el-pagination {
+    justify-content: center !important;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .el-pagination .el-pagination__total {
+    font-size: 12px;
+  }
+
+  .el-pagination .el-pager li {
+    min-width: 28px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 13px;
+  }
+
+  .el-pagination button {
+    padding: 0 8px;
+  }
+
+  /* ========== consultations.vue - 咨询记录管理 ========== */
+  .consultations .el-table {
+    font-size: 13px;
+  }
+
+  .consultations .el-table .el-table__body-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .consultations .session-preview {
+    font-size: 12px;
+  }
+
+  /* 咨询详情弹窗移动端 */
+  .el-dialog {
+    width: 95% !important;
+    margin-top: 10px !important;
+  }
+
+  .el-dialog .detail-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .el-dialog .detail-label {
+    min-width: auto;
+  }
+
+  .el-dialog .messages-list {
+    max-height: 300px;
+    padding: 8px;
+  }
+
+  .el-dialog .message-item {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+
+  .el-dialog .message-header {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  /* ========== emotional.vue - 情绪日志管理 ========== */
+  .emotional .el-table {
+    font-size: 13px;
+  }
+
+  .emotional .el-table .el-table__body-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 移动端操作列精简 */
+  .emotional .el-table .el-table__fixed-right {
+    width: auto !important;
+  }
+
+  .emotional .el-table .el-table__fixed-right .el-table__cell {
+    width: auto !important;
+    min-width: 80px;
+    padding: 6px 4px !important;
+  }
+
+  .emotional .el-table .el-table__fixed-right .el-button {
+    margin: 0 2px !important;
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    min-height: 28px !important;
+  }
+
+  /* 内容列留更多空间 */
+  .emotional .el-table th.el-table__cell:not(:last-child),
+  .emotional .el-table td.el-table__cell:not(:last-child) {
+    padding: 6px 4px;
+  }
+
+  /* 评分组件移动端优化 */
+  .emotional .el-rate {
+    height: auto;
+    white-space: normal;
+  }
+
+  .emotional .el-rate .el-rate__item {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* ========== 通用表格移动端优化 ========== */
+  .el-table {
+    font-size: 13px;
+  }
+
+  .el-table th.el-table__cell {
+    padding: 8px 0;
+    font-size: 12px;
+  }
+
+  .el-table td.el-table__cell {
+    padding: 8px 0;
+  }
+
+  /* ========== 通用表单元素移动端 ========== */
+  .el-input__wrapper {
+    padding: 8px 12px !important;
+  }
+
+  .el-select {
+    width: 100% !important;
+  }
+
+  .el-select .el-select__wrapper {
+    min-height: 40px;
+  }
+
+  /* ========== 文章编辑弹窗 ========== */
+  .el-dialog .el-form-item .el-input__wrapper {
+    padding: 8px 12px !important;
+  }
+
+  .el-dialog .el-form-item .el-textarea__inner {
+    font-size: 16px !important;
+    padding: 10px 12px !important;
+  }
+}
+
+/* ========================================
+   小屏手机（≤ 480px）精细优化
+   ======================================== */
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+
+  /* AuthLayout - 更小屏幕 */
+  .auth-layout .left-section {
+    min-height: 150px;
+    padding: 20px 16px;
+  }
+
+  .auth-layout .left-section .title {
+    font-size: 24px;
+  }
+
+  .auth-layout .left-section .text {
+    font-size: 13px;
+  }
+
+  .auth-layout .left-section .robot {
+    width: 80px;
+    height: 80px;
+  }
+
+  .auth-layout .right-section {
+    padding: 15px 10px 30px;
+  }
+
+  /* Home.vue 小屏优化 */
+  .home-container .content .text .title {
+    font-size: 24px;
+  }
+
+  .home-container .content .text p {
+    font-size: 14px;
+  }
+
+  .home-container .content .text .hero-actions .el-button {
+    min-height: 44px;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .home-container .content .robot {
+    width: 130px !important;
+    height: 130px !important;
+  }
+
+  /* Consulation 小屏 */
+  .consultation-container .chat-main .chat-messages {
+    max-height: calc(100vh - 300px);
+  }
+
+  /* Dashboard 小屏 */
+  .dashboard-container .chart-stats .stat-item {
+    flex: 1 1 45%;
+  }
+
+  .dashboard-container .chart-content {
+    height: 200px;
+  }
+
+  /* 表格小屏 */
+  .el-table th.el-table__cell,
+  .el-table td.el-table__cell {
+    padding: 6px 4px;
+  }
+
+  /* 弹窗全屏 */
+  .el-dialog {
+    width: 98% !important;
+    margin: 5px auto !important;
+  }
+
+  /* Sidebar 顶部导航 - 小屏进一步精简间距 */
+  .backend-layout .menu-style {
+    padding: 0 2px;
+  }
+
+  .backend-layout .menu-style .el-menu-item {
+    padding: 0 5px !important;
+    margin: 4px 1px !important;
+    font-size: 12px;
+    height: 36px;
+    line-height: 36px;
+  }
+
+  .backend-layout .menu-style .el-menu-item .el-icon {
+    font-size: 14px;
+  }
+}
+
+/* ========================================
+   横屏手机（高度较小）优化
+   ======================================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .auth-layout .left-section {
+    min-height: 100px;
+    padding: 10px;
+  }
+
+  .auth-layout .left-section .robot {
+    width: 60px;
+    height: 60px;
+  }
+
+  .auth-layout .right-section {
+    padding: 10px 16px;
+  }
+
+  .consultation-container .chat-main .chat-messages {
+    max-height: calc(100vh - 250px);
+  }
+}

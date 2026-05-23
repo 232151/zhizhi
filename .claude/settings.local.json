@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(node *)",
+      "Bash(npm run *)",
+      "Bash(npx vite *)",
+      "Bash(which python3 *)",
+      "Bash(which python *)",
+      "Bash(ls public/)",
+      "Bash(ls -d dist)",
+      "Bash(node -e \"try{require\\('pdf-parse'\\);console.log\\('yes'\\)}catch\\(e\\){console.log\\('no'\\)}\")",
+      "Bash(npm uninstall *)",
+      "Bash(grep -rn \"//.*console\\\\.\\\\|//.*onMounted\\\\|<!--.*el-button\" src/ --include=\"*.vue\" --include=\"*.js\")"
+    ]
+  }
+}
